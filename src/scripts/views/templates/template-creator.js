@@ -1,79 +1,113 @@
 import CONFIG from "../../globals/config";
 
+const createHeroImage = `
+  <div class="hero">
+      <img src="./heros/hero-image_4.jpg" alt="heroImage">
+      <div class="judul">
+        <h4>Restoku</h4>
+        <p>Resto terbaik di Nusantara</p>
+      </div>
+  </div>
+    `;
+
 const createRestoDetailTemplate = (resto) => `
-  <h2 class="movie__title">${resto.restaurant.name}</h2>
-  <img class="movie__poster" src="${
+  <h2 class="resto__title">${resto.restaurant.name}</h2>
+  <img class="resto__poster" src="${
     CONFIG.BASE_IMAGE_URL + resto.restaurant.pictureId
   }" alt="${resto.restaurant.name}" />
-  <div class="movie__info">
+  <div class="resto__info">
   <h3>Information</h3>
-    <h4>Alamat</h4>
+    <h3>Alamat</h3>
     <p>${resto.restaurant.address}, ${resto.restaurant.city}</p>
-    <h4>Kategori Menu</h4>
+    <div class="resto__overview">
+    <h3>Overview</h3>
+    <p>${resto.restaurant.description}</p>
+    </div>
+  <div class="kategori">
+    <div class="kategori-menu">
+    <h3>Kategori Menu</h3>
+    <ul>
     ${resto.restaurant.categories
       .map(
         (categori) => `
-    <span class="category-name">${categori.name}</span>
+        <li class="category-name">${categori.name}</li>
   `
       )
       .join("")}
-    <h4>Menu Makanan</h4>
+      </ul>
+    </div>
+
+    <div class="kategori-makanan">
+    <h3>Menu Makanan</h3>
+      <ul>
     ${resto.restaurant.menus.foods
       .map(
         (food) => `
-    <span class="category-name">${food.name}</span>
+        <li class="category-name">${food.name}</li>
   `
       )
       .join("")}
-    <h4>Menu Minuman</h4>
+      </ul>
+    </div>
+
+    <div class="kategori-minuman">
+    <h3>Menu Minuman</h3>
+    <ul>
     ${resto.restaurant.menus.drinks
       .map(
         (drink) => `
-    <span class="category-name">${drink.name}</span>
+        <li class="category-name">${drink.name}</li>
   `
       )
       .join("")}
-    <h4>Rating</h4>
-    <p>${resto.restaurant.rating}</p>
-    <h4>Customer Review</h4>
-    ${resto.restaurant.customerReviews
-      .map(
-        (review) => `
-    <div class="review-card">
-      <p class="review-name">${review.name}</p>
-      <p class="review-date">${review.date}</p>
-      <p class="review-comment">${review.review}</p>
+      
+      </div>
+      <div class="kategori-rating">
+      <h3>Rating</h3>
+      <p>${resto.restaurant.rating}</p>
+      </div>
     </div>
-  `
-      )
-      .join("")}
+    
+    <h3>Customer Review</h3>
+    <div class="review">
+      ${resto.restaurant.customerReviews
+        .map(
+          (review) => `
+      <div class="review-card">
+        <i class="fas fa-user-circle"></i>
+        <p class="review-name">${review.name}</p>
+        <p class="review-comment">${review.review}</p>
+        <p class="review-date">${review.date}</p>
+      </div>
+    `
+        )
+        .join("")}
+      </div>
   </div>
-  <div class="movie__overview">
-    <h3>Overview</h3>
-    <p>${resto.restaurant.description}</p>
-  </div>
+  
+
 `;
 
 const createRestoItemTemplate = (resto) => `
-  <div class="movie-item">
-    <div class="movie-item__header">
-        <img class="movie-item__header__poster" alt="${resto.name}"
+  <div class="resto-item">
+    <div class="resto-item__header">
+        <img class="resto-item__header__poster" alt="${resto.name}"
             src="${
               resto.pictureId
                 ? CONFIG.BASE_IMAGE_URL + resto.pictureId
                 : "https://picsum.photos/id/666/800/450?grayscale"
             }">
-        <div class="movie-item__header__rating">
-            <p>⭐️<span class="movie-item__header__rating__score">${
+        <div class="resto-item__header__rating">
+            <p>⭐️<span class="resto-item__header__rating__score">${
               resto.rating
             }</span></p>
         </div>
     </div>
-    <div class="movie-item__content">
+    <div class="resto-item__content">
         <h3><a href="${`/#/detail/${resto.id}`}">${resto.name}</a></h3>
         <p>${resto.description}</p>
     </div>
   </div>
   `;
 
-export { createRestoItemTemplate, createRestoDetailTemplate };
+export { createRestoItemTemplate, createRestoDetailTemplate, createHeroImage };

@@ -1,15 +1,21 @@
 import TheRestoDbSource from "../../data/theresto-source";
-import { createRestoItemTemplate } from "../templates/template-creator";
+import {
+  createRestoItemTemplate,
+  createHeroImage,
+} from "../templates/template-creator";
 
 const Home = {
   async render() {
     return `
-    <div class="content">
-        <h2 class="content__heading">List Restaurant</h2>
-        <div id="movies" class="movies">
+      <div class="jumbotron" id="jumbotron">
+       
+      </div>
 
-        </div>
-    </div>
+      <div class="content">
+          <h2 class="content__heading">Explore Restaurant</h2>
+          <div id="restos" class="restos">
+          </div>
+      </div>
       `;
   },
 
@@ -18,7 +24,10 @@ const Home = {
     const restos = await TheRestoDbSource.homeResto();
     // console.log(restos);
 
-    const restosContainer = document.querySelector("#movies");
+    const jumbotronContainer = document.querySelector("#jumbotron");
+    jumbotronContainer.innerHTML += createHeroImage;
+
+    const restosContainer = document.querySelector("#restos");
     restos.forEach((resto) => {
       restosContainer.innerHTML += createRestoItemTemplate(resto);
     });
