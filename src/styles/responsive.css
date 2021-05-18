@@ -28,12 +28,12 @@
     margin: 0;
   }
 
-  .restos-detail .resto__poster {
+  /* .restos-detail .resto__poster {
     width: 70%;
     display: block;
     margin: 0 auto;
-    /* max-width: 400px; */
-  }
+   
+  } */
 }
 
 @media screen and (min-width: 800px) {
@@ -68,9 +68,9 @@
   .restos-detail {
     padding: 0px 100px;
   }
-  .restos-detail .resto__poster {
+  /* .restos-detail .resto__poster {
     width: 60%;
-  }
+  } */
 
   .restos-detail .kategori {
     width: 100%;

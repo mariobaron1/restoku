@@ -122,8 +122,10 @@ const createLikedButtonTemplate = () => `
   </button>
 `;
 
-const njajal = (resto) => `
-            <h1>${resto.name}</h1>
+const emptyFavorite = `
+<div class="empty-favorite-tag">
+  <p>Favorite restaurant masih kosong</p>
+</div>
 `;
 
 export {
@@ -132,5 +134,5 @@ export {
   createHeroImage,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
-  njajal,
+  emptyFavorite,
 };
